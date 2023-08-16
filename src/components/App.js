@@ -6,7 +6,7 @@ import Button from './Button';
 import Modal from './Modal';
 import { fetchImages } from './api';
 import './styles.css';
-
+ 
 const App = () => {
   const [images, setImages] = useState({ hits: [], total: 0 });
   const [query, setQuery] = useState('');
