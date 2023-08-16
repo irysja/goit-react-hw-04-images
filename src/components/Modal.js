@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 const Modal = ({ largeImageURL, onClose }) => {
-  const handleKeyPress = e => {
-    if (e.code === 'Escape') {
-      onClose();
-    }
-  };
+  const handleKeyPress = useCallback(
+    e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+    const keyPressHandler = e => {
+      handleKeyPress(e);
     };
-  }, [onClose]);
+
+    window.addEventListener('keydown', keyPressHandler);
+    return () => {
+      window.removeEventListener('keydown', keyPressHandler);
+    };
+  }, [handleKeyPress]);
 
   return (
     <div className="Overlay" onClick={onClose}>
