@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const ImageGalleryItem = ({ src, alt, onClick, largeImage }) => (
@@ -13,8 +12,3 @@ const ImageGalleryItem = ({ src, alt, onClick, largeImage }) => (
 );
 
 export default ImageGalleryItem;
-
-
-
-
-
